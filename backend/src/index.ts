@@ -3,6 +3,7 @@ import express, { Errback, Express, NextFunction, Request, Response } from "expr
 import userRoute from "./routes/userRoutes";
 import authRoute from "./routes/auth.route";
 import weatherRoute from "./routes/weatherRoute";
+import safeLocsRoute from "./routes/safeLocsRoute"
 import cors from "cors";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
@@ -31,6 +32,7 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/api/user",userRoute);
 app.use("/api/auth",authRoute);
 app.use("/api/weather",weatherRoute);
+app.use("/api/safe-locs",safeLocsRoute);
 
 
 
