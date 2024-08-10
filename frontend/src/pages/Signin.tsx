@@ -5,9 +5,10 @@ import { Toaster, toast } from "react-hot-toast";
 import {signInStart,signInSuccess,signInFailure} from "../redux/user/userSlice"
 import { useDispatch,useSelector } from "react-redux";
 // import OAuth from "../components/OAuth";
-interface formData{
+export interface formData{
     email:string;
     password:string;
+    username?:string;
 }
 const Signin = () => {
   const navigate = useNavigate();
