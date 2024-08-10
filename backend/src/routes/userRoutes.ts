@@ -1,10 +1,14 @@
-import express from "express";
-import { test,updateUser } from "../controllers/userController";
+import express from 'express'
+import {deleteUser, getUser, getUsers, test, updateUser} from '../controllers/user.controller';
+import { verifyUser } from '../utils/verifyUser';
+import { signout } from '../controllers/auth.controller';
+const router=express.Router();
 
-const router=express.Router()
-
-// api/user/
-router.get("/test",test);
-router.get("/update",updateUser);
+router.get('/test',test)
+router.put('/update/:userId',verifyUser,updateUser)
+router.delete('/delete/:userId',verifyUser,deleteUser)
+router.post('/signout',signout)
+router.get('/getusers',verifyUser,getUsers)
+router.get('/:userId', getUser);
 
 export default router;
