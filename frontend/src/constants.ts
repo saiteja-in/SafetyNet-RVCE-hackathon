@@ -15,7 +15,7 @@ export const WEEKDAYS: string[] = [
   "Sat",
 ];
 
-export const WEEKDAYSlen=7;
+// export const WEEKDAYSlen=7;
 
 export const WEATHERINFO: WeatherInfoType = {
   "01d": { lottiefile: "01d", icon: "sunny day", emoji: "☀️" },
