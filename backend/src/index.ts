@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import express, { Errback, Express, NextFunction, Request, Response } from "express";
 import userRoute from "./routes/userRoutes";
+import authRoute from "./routes/auth.route";
 import weatherRoute from "./routes/weatherRoute";
 import cors from "cors";
 import mongoose from "mongoose";
@@ -28,6 +29,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/api/user",userRoute);
+app.use("/api/auth",authRoute);
 app.use("/api/weather",weatherRoute);
 
 

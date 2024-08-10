@@ -19,7 +19,7 @@ const OAuth = () => {
         const resultsFromGoogle=await signInWithPopup(auth,provider);
         console.log("fdjkslakjldfsdfs");
         console.log(resultsFromGoogle);
-        const res=await fetch('/api/auth/google',{
+        const res=await fetch('http://localhost:3217/api/auth/google',{
             method:'POST',
             headers: {
               "Content-Type": "application/json",
