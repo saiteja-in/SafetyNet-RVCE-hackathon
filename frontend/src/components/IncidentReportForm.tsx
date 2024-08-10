@@ -27,7 +27,7 @@ type Props = {
 };
 
 const IncidentReportForm = ({ onSubmit, isLoading }: Props) => {
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<File | undefined>();
 
   const form = useForm<IncidentFormData>({
     resolver: zodResolver(formSchema),
@@ -44,7 +44,7 @@ const IncidentReportForm = ({ onSubmit, isLoading }: Props) => {
   });
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = event.target.files?.[0] || null;
+    const selectedFile = event.target.files?.[0];
     setFile(selectedFile);
     form.setValue("imageFile", selectedFile); // Update form state
   };
