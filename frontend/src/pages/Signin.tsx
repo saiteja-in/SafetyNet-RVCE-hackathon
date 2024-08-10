@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
 import {signInStart,signInSuccess,signInFailure} from "../redux/user/userSlice"
 import { useDispatch,useSelector } from "react-redux";
-// import OAuth from "../components/OAuth";
+import OAuth from "../components/OAuth";
 export interface formData{
     email:string;
     password:string;
@@ -158,7 +158,7 @@ const Signin = () => {
                     </Button>
                   </div>
                 </div>
-                {/* <OAuth/> */}
+                <OAuth/>
               </form>
 
             </div>
