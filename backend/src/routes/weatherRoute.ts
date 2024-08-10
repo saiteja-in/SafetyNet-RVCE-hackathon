@@ -5,6 +5,6 @@ const router=express.Router()
 
 // api/weather/
 router.get("/test",test);
-router.get("/getWeather",getWeather);
+router.post("/getWeather",getWeather);
 
 export default router;

@@ -21,7 +21,7 @@ const IncidentReportPage: React.FC = () => {
       });
 
       toast.success('Incident report submitted successfully!');
-      navigate(`/incident/${response.data.id}`);
+      navigate(`/announcements`);
     } catch (error) {
       console.error('Error submitting incident report:', error);
       toast.error('Failed to submit incident report. Please try again.');

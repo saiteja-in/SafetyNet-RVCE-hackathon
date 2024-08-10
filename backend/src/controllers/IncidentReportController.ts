@@ -14,6 +14,8 @@ const getIncidentReports = async (req: Request, res: Response) => {
 
 const createIncidentReport = async (req: Request, res: Response) => {
   try {
+    console.log(req.body);
+    
     const imageUrl = req.file ? await uploadImage(req.file as Express.Multer.File) : undefined;
 
     const report = new IncidentReport({

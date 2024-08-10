@@ -18,6 +18,10 @@ const incidentReportSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  typeofdisaster:{
+    type:String,
+    required:true
+  },
   incidentCity: {
     type: String,
     required: true,
@@ -44,6 +48,10 @@ const incidentReportSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  isVerified:{
+    type:String,
+    default:"No"
+  }
 });
 
 // Create and export the model

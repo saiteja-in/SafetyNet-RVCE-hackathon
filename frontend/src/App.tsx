@@ -5,6 +5,9 @@ import Header from "./components/Header";
 import Signin from "./pages/Signin";
 import SignUp from "./pages/SignUp";
 import Report from "./pages/Report";
+import NearestSafeLocs from "./pages/NearestSafeLocs";
+import Announcements from "./pages/Announcements";
+
 const App = () => {
   return (
     <>
@@ -15,6 +18,8 @@ const App = () => {
           <Route path="/sign-in" element={<Signin/>} />
           <Route path="/sign-up" element={<SignUp/>} />
           <Route path="/report" element={<Report/>} />
+          <Route path="/announcements" element={<Announcements/>} />
+          <Route path="/safe-loc" element={<NearestSafeLocs/>} />
         </Routes>
       </BrowserRouter>
     </>

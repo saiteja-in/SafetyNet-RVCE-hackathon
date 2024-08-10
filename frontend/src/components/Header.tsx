@@ -94,8 +94,8 @@ const Header = () => {
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
-          <Navbar.Link active={path === "/search"} as={"div"}>
-            <Link className="text-xl" to="/search">
+          <Navbar.Link active={path === "/announcements"} as={"div"}>
+            <Link className="text-xl" to="/announcements">
               Announcements
             </Link>
           </Navbar.Link>
@@ -104,8 +104,8 @@ const Header = () => {
               Report an event
             </Link>
           </Navbar.Link>
-          <Navbar.Link active={path === "/projects"} as={"div"}>
-            <Link className="text-xl" to="/projects">
+          <Navbar.Link active={path === "/safe-loc"} as={"div"}>
+            <Link className="text-xl" to="/safe-loc">
               Nearby Safe Location
             </Link>
           </Navbar.Link>
