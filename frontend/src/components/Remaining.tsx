@@ -1,5 +1,6 @@
 import React from 'react';
 import { WeatherDataItem } from '../types/ForecastInterfaces';
+import { Droplets, Umbrella, ArrowDown, ArrowUp, Thermometer } from 'lucide-react';
 
 interface RemainingProps {
   data: WeatherDataItem[];
@@ -51,19 +52,27 @@ const Remaining: React.FC<RemainingProps> = ({ data }) => {
                   </div>
                   <div className="flex flex-col space-y-2">
                     <div className="flex space-x-4">
-                      <span className="font-medium">Min Temp:</span>
+                      <span className="font-medium flex items-center">
+                        <ArrowDown className="w-4 h-4 mr-1 text-blue-500" /> Min Temp:
+                      </span>
                       <span>{formatTemperature(item.temp.min)}</span>
                     </div>
                     <div className="flex space-x-4">
-                      <span className="font-medium">Max Temp:</span>
+                      <span className="font-medium flex items-center">
+                        <ArrowUp className="w-4 h-4 mr-1 text-red-500" /> Max Temp:
+                      </span>
                       <span>{formatTemperature(item.temp.max)}</span>
                     </div>
                     <div className="flex space-x-4">
-                      <span className="font-medium">Pressure:</span>
+                      <span className="font-medium flex items-center">
+                        <Umbrella className="w-4 h-4 mr-1 text-gray-500" /> Pressure:
+                      </span>
                       <span>{item.pressure} hPa</span>
                     </div>
                     <div className="flex space-x-4">
-                      <span className="font-medium">Humidity:</span>
+                      <span className="font-medium flex items-center">
+                        <Droplets className="w-4 h-4 mr-1 text-blue-400" /> Humidity:
+                      </span>
                       <span>{item.humidity}%</span>
                     </div>
                   </div>

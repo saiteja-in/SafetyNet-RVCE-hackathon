@@ -1,6 +1,6 @@
 import { Button } from "flowbite-react";
 import { getAuth,GoogleAuthProvider,signInWithPopup } from "firebase/auth";
-import { app } from "../firebase";
+import { app1 } from "../firebase";
 import { useDispatch } from "react-redux";
 import { signInSuccess } from "../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ const OAuth = () => {
     const dispatch=useDispatch();
     const navigate=useNavigate();
   const handleGoogleClick = async () => {
-    const auth=getAuth(app);
+    const auth=getAuth(app1);
     const provider=new GoogleAuthProvider();
     provider.setCustomParameters({
       prompt: "select_account",
