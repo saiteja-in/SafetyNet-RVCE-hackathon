@@ -99,8 +99,8 @@ const Header = () => {
               Announcements
             </Link>
           </Navbar.Link>
-          <Navbar.Link active={path === "/about"} as={"div"}>
-            <Link className="text-xl" to="/about">
+          <Navbar.Link active={path === "/report"} as={"div"}>
+            <Link className="text-xl" to="/report">
               Report an event
             </Link>
           </Navbar.Link>
