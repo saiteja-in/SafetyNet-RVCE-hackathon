@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import express, { Errback, Express, NextFunction, Request, Response } from "express";
 import userRoute from "./routes/userRoutes";
+import weatherRoute from "./routes/weatherRoute";
 import cors from "cors";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
@@ -27,7 +28,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/api/user",userRoute);
-
+app.use("/api/weather",weatherRoute);
 
 
 
