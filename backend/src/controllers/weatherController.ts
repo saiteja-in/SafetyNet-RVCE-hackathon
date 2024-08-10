@@ -9,12 +9,12 @@ export const test = async (req:Request, res:Response) => {
 };
 
 export const getWeather = async (req:Request, res:Response) => {
-  console.log(req.body);
+  // console.log(req.body);
   const {lat,lon}=req.body;
   try {
     const apiRes=await axios.get(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${process.env.OPEN_WEATHER_API_KEY}`);
     // console.log(apiRes);
-    res.json({apiRes:apiRes.data})
+    res.json({data:apiRes.data})
   } catch (error) {
     console.log(error);
   }
