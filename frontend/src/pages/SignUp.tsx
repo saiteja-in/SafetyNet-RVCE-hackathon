@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { formData } from "./Signin";
-// import OAuth from "../components/OAuth";
+import OAuth from "../components/OAuth";
 const SignUp = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState<formData>({username:"", email: "", password: ""});
@@ -157,7 +157,7 @@ const SignUp = () => {
                     </Button>
                   </div>
                 </div>
-                {/* <OAuth/> */}
+                <OAuth/>
                 {/* <div>{errorMessage && <p className="text-red-500">{errorMessage}</p>}</div> */}
               </form>
 
