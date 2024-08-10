@@ -23,7 +23,7 @@ const SignUp = () => {
     try {
       setLoading(true);
       setErrorMessage(""); //to clear the previous error message
-      const res = await fetch("/api/auth/signup", {
+      const res = await fetch("http://localhost:3217/api/auth/signup", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {

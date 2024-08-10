@@ -29,7 +29,7 @@ const Signin = () => {
     try {
       dispatch(signInStart());
       console.log(formData);
-      const res = await fetch("/api/auth/signin", {
+      const res = await fetch("http://localhost:3217/api/auth/signin", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
