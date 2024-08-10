@@ -5,6 +5,7 @@ import myReportRoute from "./routes/incidentReportRouter"
 import { v2 as cloudinary } from 'cloudinary'
 import authRoute from "./routes/auth.route";
 import weatherRoute from "./routes/weatherRoute";
+import safeLocsRoute from "./routes/safeLocsRoute"
 import cors from "cors";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
@@ -37,6 +38,7 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/api/user",userRoute);
 app.use("/api/auth",authRoute);
 app.use("/api/weather",weatherRoute);
+app.use("/api/safe-locs",safeLocsRoute);
 app.use("/api/my/report", myReportRoute);
 
 
