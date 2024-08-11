@@ -2,18 +2,18 @@ import {
   Navbar,
   Button,
   Dropdown,
-  Avatar, // This import is now used correctly
+  Avatar,
 } from "flowbite-react";
 import { Link, useLocation } from "react-router-dom";
 import { signoutSuccess } from "../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState, AppDispatch } from "../redux/store"; // Ensure AppDispatch is correctly defined in your store
+import { RootState, AppDispatch } from "../redux/store";
+import { Home, Bell, AlertTriangle, MapPin, PhoneCall, LogOut, User, Menu } from "lucide-react";
 
 const Header = () => {
-  // Properly typed useDispatch
-  const dispatch = useDispatch<AppDispatch>(); 
-
+  const dispatch = useDispatch<AppDispatch>();
   const path = useLocation().pathname;
+  const { currentUser } = useSelector((state: RootState) => state.user);
 
   const handleSignout = async () => {
     try {
@@ -34,90 +34,81 @@ const Header = () => {
     }
   };
 
-  // Properly typed useSelector
-  const { currentUser } = useSelector((state: RootState) => state.user);
-
   return (
-    <div className="">
-      <Navbar className="border-b-2 dark:bg-gray-900">
-        <Link
-          to="/"
-          className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
-        >
-          <span className="px-2 py-1 bg-gradient-to-r rounded-lg">
-            Home
-          </span>
-        </Link>
+    <Navbar className="border-b-2 bg-white dark:bg-gray-900 px-4 lg:px-6 py-3">
+      <Link to="/" className="flex items-center">
+        <span className="self-center text-2xl font-bold whitespace-nowrap text-gray-900 dark:text-white">
+          <Home className="inline-block mr-2 h-6 w-6" />
+          SafetyNet
+        </span>
+      </Link>
 
-        <div className="flex gap-2 md:order-2">
-          {currentUser ? (
-            <Dropdown
-              arrowIcon={false}
-              inline
-              label={
-                <Avatar
-                  alt="user"
-                  img={currentUser.profilePicture} // Correct usage of the img prop in Avatar
-                  rounded
-                />
-              }
-              className="relative z-50"
-            >
-              <Dropdown.Header>
-                <span className="block text-sm font-medium text-white-300">
-                  @{currentUser.username}
-                </span>
-                <span className="block truncate text-sm text-gray-900 font-medium">
-                  {currentUser.email}
-                </span>
-              </Dropdown.Header>
-              <Dropdown.Item as={Link} to="/dashboard?tab=profile">
-                Profile
-              </Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item as={Link} to="/dashboard?tab=dash">
-                Dashboard
-              </Dropdown.Item>
-              <Dropdown.Divider />
-              <Dropdown.Item as="button" onClick={handleSignout}>
-                Logout
-              </Dropdown.Item>
-            </Dropdown>
-          ) : (
-            <Link to="/sign-in">
-              <Button gradientDuoTone="purpleToPink" outline>
-                Sign In
-              </Button>
-            </Link>
-          )}
+      <div className="flex items-center lg:order-2">
+        {currentUser ? (
+          <Dropdown
+            arrowIcon={false}
+            inline
+            label={
+              <Avatar
+                alt="user"
+                img={currentUser.profilePicture}
+                rounded
+                size="md"
+              />
+            }
+          >
+            <Dropdown.Header>
+              <span className="block text-base font-semibold text-gray-900">@{currentUser.username}</span>
+              <span className="block truncate text-sm font-medium text-gray-500">{currentUser.email}</span>
+            </Dropdown.Header>
+            <Dropdown.Item icon={User}>
+              <Link to="/dashboard?tab=profile" className="text-sm">Profile</Link>
+            </Dropdown.Item>
+            <Dropdown.Divider />
+            <Dropdown.Item icon={LogOut} onClick={handleSignout} className="text-sm text-red-600 hover:bg-red-50">
+              Sign out
+            </Dropdown.Item>
+          </Dropdown>
+        ) : (
+          <Link to="/sign-in">
+            <Button color="blue" size="md" className="font-semibold">
+              Sign In
+            </Button>
+          </Link>
+        )}
+        <Navbar.Toggle className="ml-3">
+          <Menu className="h-6 w-6 text-gray-600 dark:text-gray-400" />
+        </Navbar.Toggle>
+      </div>
 
-          <Navbar.Toggle />
-        </div>
-        <Navbar.Collapse>
-          <Navbar.Link active={path === "/announcements"} as={"div"}>
-            <Link className="text-xl" to="/announcements">
-              Announcements
-            </Link>
-          </Navbar.Link>
-          <Navbar.Link active={path === "/report"} as={"div"}>
-            <Link className="text-xl" to="/report">
-              Report an event
-            </Link>
-          </Navbar.Link>
-          <Navbar.Link active={path === "/safe-loc"} as={"div"}>
-            <Link className="text-xl" to="/safe-loc">
-              Nearby Safe Location
-            </Link>
-          </Navbar.Link>
-          <Navbar.Link active={path === "/projects"} as={"div"}>
-            <Link className="text-xl" to="/projects">
-              Emergency contacts
-            </Link>
-          </Navbar.Link>
-        </Navbar.Collapse>
-      </Navbar>
-    </div>
+      <Navbar.Collapse>
+        <NavItem icon={Bell} to="/announcements" active={path === "/announcements"}>
+          Announcements
+        </NavItem>
+        <NavItem icon={AlertTriangle} to="/report" active={path === "/report"}>
+          Report an Event
+        </NavItem>
+        <NavItem icon={MapPin} to="/safe-loc" active={path === "/safe-loc"}>
+          Safe Locations
+        </NavItem>
+        <NavItem icon={PhoneCall} to="/emergency" active={path === "/emergency"}>
+          Emergency Contacts
+        </NavItem>
+      </Navbar.Collapse>
+    </Navbar>
   );
 };
+
+const NavItem = ({ icon: Icon, to, active, children }: { icon: React.ComponentType<any>, to: string, active: boolean, children: React.ReactNode }) => (
+  <Navbar.Link 
+    as="div" 
+    active={active}
+  >
+    <Link to={to} className="flex items-center text-base font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-white">
+      <Icon className="w-5 h-5 mr-2" />
+      {children}
+    </Link>
+  </Navbar.Link>
+);
 
 export default Header;
