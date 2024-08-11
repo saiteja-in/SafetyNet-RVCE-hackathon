@@ -23,7 +23,17 @@ mongoose
 
 const app: Express = express();
 app.use(express.json());
-app.use(cors());
+// Middleware for CORS
+app.use(cors({
+  origin: ["https://safety-net-tn.onrender.com","https://safety-net-tn.onrender.com", "http://localhost:5173"],
+  methods: ["POST", "GET", "PUT", "DELETE"],
+  credentials: true
+}));
+
+const path=require('path');
+// deploy react build in this server
+app.use(express.static(path.join(__dirname,'../../frontend/dist')));
+
 app.use(cookieParser())
 cloudinary.config({
   cloud_name:"dvl1fcwo2",
@@ -31,9 +41,9 @@ cloudinary.config({
   api_secret:"lI0WEcvW-IkB3teWRBEQR5B72t8"
 })
 
-app.get("/", (req: Request, res: Response) => {
-  res.send("Express + TypeScript Server");
-});
+// app.get("/", (req: Request, res: Response) => {
+//   res.send("Express + TypeScript Server");
+// });
 
 app.use("/api/user",userRoute);
 app.use("/api/auth",authRoute);
@@ -52,6 +62,12 @@ app.use((err:any,req:Request,res:Response,next:NextFunction)=>{
       message
   });
 })
+
+
+// Catch-all route to handle client-side routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'));
+});
 
 
 const port = process.env.PORT || 3000;
