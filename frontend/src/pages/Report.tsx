@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import IncidentReportForm, { IncidentFormData } from '../components/IncidentReportForm';
+import IncidentReportForm  from '../components/IncidentReportForm';
 import toast, { Toaster } from 'react-hot-toast';
 
 const IncidentReportPage: React.FC = () => {
@@ -19,6 +19,8 @@ const IncidentReportPage: React.FC = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
+      console.log(response);
+      
 
       toast.success('Incident report submitted successfully!');
       navigate(`/announcements`);

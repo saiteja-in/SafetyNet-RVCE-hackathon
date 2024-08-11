@@ -164,22 +164,40 @@ const Signin = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-center px-4 py-10 sm:py-16 lg:py-24 bg-gray-50 sm:px-6 lg:px-8">
-            <div>
-              <img
-                className="w-full mx-auto"
-                // src={blog}
-                alt=""
-                style={{ maxWidth: "400px" }} // Set maximum width to 300px
-              />
+          <div className="flex flex-col items-center justify-center px-4 py-10 sm:py-16 lg:py-24 bg-gray-50 sm:px-6 lg:px-8">
+  <div className="text-center">
+    {/* <img
+      className="w-full mx-auto mb-8 animate-pulse"
+      src="https://example.com/path-to-disaster-management-icon.svg" // Replace with an actual disaster management icon
+      alt="Disaster Management Icon"
+      style={{ maxWidth: "200px" }}
+    /> */}
 
-              <div className="w-full max-w-md mx-auto xl:max-w-xl">
-                <h3 className="text-4xl font-bold text-center text-black">
-                Disaster Avoidance
-                </h3>
-              </div>
-            </div>
-          </div>
+    <h3 className="text-4xl font-bold text-blue-700 mb-4">
+      Disaster Preparedness
+    </h3>
+
+    <p className="text-2xl font-semibold text-gray-800 mb-6">
+      "Readiness Today, Resilience Tomorrow"
+    </p>
+
+    <div className="space-y-4 max-w-md mx-auto">
+      <p className="text-lg text-gray-600 transition-all duration-300 hover:text-blue-600">
+        🏠 Protect your home and loved ones
+      </p>
+      <p className="text-lg text-gray-600 transition-all duration-300 hover:text-blue-600">
+        🚨 Stay informed, stay safe
+      </p>
+      <p className="text-lg text-gray-600 transition-all duration-300 hover:text-blue-600">
+        🤝 Build community resilience together
+      </p>
+    </div>
+
+    <button onClick={() => navigate("/emergency")} className="mt-8 px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors duration-300 transform hover:scale-105">
+      Learn More About Preparedness
+    </button>
+  </div>
+</div>
         </div>
     </div>
   );
