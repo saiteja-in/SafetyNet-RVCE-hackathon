@@ -211,7 +211,7 @@ const IncidentReportForm = ({ onSubmit, isLoading }: Props) => {
           <FormField
             control={form.control}
             name="severity"
-            render={({ field }) => (
+            render={({ }) => (
               <FormItem>
                 <FormLabel className="flex items-center gap-2">
                   <AlertTriangle className="w-5 h-5 text-red-500" />
@@ -245,7 +245,7 @@ const IncidentReportForm = ({ onSubmit, isLoading }: Props) => {
         <FormField
           control={form.control}
           name="imageFile"
-          render={({ field }) => (
+          render={({ }) => (
             <FormItem>
               <FormLabel className="flex items-center gap-2">
                 <CloudUpload className="w-5 h-5 text-gray-600" />

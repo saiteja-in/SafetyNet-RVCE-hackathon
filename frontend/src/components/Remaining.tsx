@@ -1,6 +1,6 @@
 import React from 'react';
 import { WeatherDataItem } from '../types/ForecastInterfaces';
-import { Droplets, Umbrella, ArrowDown, ArrowUp, Thermometer } from 'lucide-react';
+import { Droplets, Umbrella, ArrowDown, ArrowUp} from 'lucide-react';
 
 interface RemainingProps {
   data: WeatherDataItem[];
